@@ -28,7 +28,7 @@ if HOST_PLATFORM == "Windows":
     PACKAGE_BUILD_LIST_PLATFORM_ARCH = 'windows'
 elif HOST_PLATFORM == "Linux":
     if HOST_ARCH == "aarch64":
-        PACKAGE_BUILD_LIST_PLATFORM_ARCH = 'linux-arm64'
+        PACKAGE_BUILD_LIST_PLATFORM_ARCH = 'linux-aarch64'
     else:
         PACKAGE_BUILD_LIST_PLATFORM_ARCH = 'linux'
 elif HOST_PLATFORM == "Darwin":
@@ -170,8 +170,7 @@ def build_package(name: str) -> int:
     root_path = Path(__file__).parent.parent.parent
     output_folder = root_path / "packages"
     search_path = root_path
-    BuildPackage(name, output_folder, search_path)
-    return 0
+    return BuildPackage(name, output_folder, search_path)
 
 def main(argv: List[str] | None = None) -> int:
     argv = argv if argv is not None else sys.argv[1:]
